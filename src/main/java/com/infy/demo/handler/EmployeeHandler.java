@@ -26,7 +26,7 @@ public class EmployeeHandler {
 		
 		String id = request.pathVariable("id");
 		//TODO: id validation
-		Mono<Employee> emp = empService.getEmployeeDetails( Long.parseLong(id) );
+		Mono<Employee> emp = empService.getEmployeeDetails( id );
 		
 		return ServerResponse.ok()
 				.contentType(MediaType.APPLICATION_JSON)
@@ -51,7 +51,7 @@ public class EmployeeHandler {
 	public Mono<ServerResponse> deleteEmployee(ServerRequest request) {
 		String id = request.pathVariable("id");
 		//TODO: id validation
-		Mono<Void> deleteItem = empService.deleteEmployeeDetails( Long.parseLong(id) );
+		Mono<Void> deleteItem = empService.deleteEmployeeDetails( id );
 		
 		return ServerResponse.ok()
 				.contentType(MediaType.APPLICATION_JSON)

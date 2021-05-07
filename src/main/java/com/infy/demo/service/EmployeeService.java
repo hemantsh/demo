@@ -2,7 +2,6 @@ package com.infy.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.server.ServerResponse;
 
 import com.infy.demo.model.Employee;
 import com.infy.demo.repo.EmployeeRepository;
@@ -19,14 +18,14 @@ public class EmployeeService {
 	SequenceGeneratorService seqService;
 	
 
-	public Mono<Employee> getEmployeeDetails( long id) {
+	public Mono<Employee> getEmployeeDetails( String id) {
 		
-		return empRepo.findByEmployeeId(id);
+		return empRepo.findById(id);
 	}
 	
 
-	public Mono<Void> deleteEmployeeDetails( long id ) {
-		return empRepo.deleteByEmployeeId(id);
+	public Mono<Void> deleteEmployeeDetails( String id ) {
+		return empRepo.deleteById(id);
 	}
 	
 	
@@ -47,13 +46,13 @@ public class EmployeeService {
 //			Mono<ServerResponse> badReq = ServerResponse.badRequest().bodyValue("Employee id must be empty");
 //			return badReq;
 //		}
-		seqService.generateSequence(Employee.SEQUENCE_NAME)
-    	.doOnSuccess(result -> {
-    		emp.setEmployeeId(result.getSequence());
-//    		System.out.println( " Setting new id ============"+ emp.getEmployeeId() );
-    		//empRepo.save( emp );
-    	})
-    	.subscribe();
+//		seqService.generateSequence(Employee.SEQUENCE_NAME)
+//    	.doOnSuccess(result -> {
+//    		emp.setEmployeeId(result.getSequence());
+////    		System.out.println( " Setting new id ============"+ emp.getEmployeeId() );
+//    		//empRepo.save( emp );
+//    	})
+//    	.subscribe();
 		
 //		System.out.println( " INSERT ============"+ emp.getEmployeeId() );
 		return empRepo.save( emp );

@@ -16,15 +16,15 @@ public class EmployeeModelListener extends AbstractMongoEventListener<Employee> 
     @Override
     public void onBeforeConvert(BeforeConvertEvent<Employee> event) {
     	
-        if (event.getSource().getEmployeeId() < 1) {
-        	
-        	sequenceGeneratorService.generateSequence(Employee.SEQUENCE_NAME)
-        	.doOnNext(result -> {
-        		//event.getSource().setEmployeeId(result.getSequence());
-//        		System.out.println( "onBeforeConvert seq===="+ event.getSource().getEmployeeId() );
-        	})
-        	.subscribe();
-        }
+//        if (event.getSource().getEmployeeId() < 1) {
+//        	
+//        	sequenceGeneratorService.generateSequence(Employee.SEQUENCE_NAME)
+//        	.doOnNext(result -> {
+//        		//event.getSource().setEmployeeId(result.getSequence());
+////        		System.out.println( "onBeforeConvert seq===="+ event.getSource().getEmployeeId() );
+//        	})
+//        	.subscribe();
+//        }
         //super.onBeforeSave(event);
 //        System.out.println( "after seq===="+ event.getSource().getEmployeeId() );
     }

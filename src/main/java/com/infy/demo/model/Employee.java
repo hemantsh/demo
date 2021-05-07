@@ -21,7 +21,7 @@ public class Employee  implements Serializable {
 	
 	@Id
 	private String id;
-	private long employeeId;
+	//private long employeeId;
     private String employeeName;
     
 	private Date doj;
@@ -30,12 +30,12 @@ public class Employee  implements Serializable {
 	
 	
 	
-	public long getEmployeeId() {
-		return employeeId;
-	}
-	public void setEmployeeId(long employeeId) {
-		this.employeeId = employeeId;
-	}
+//	public long getEmployeeId() {
+//		return employeeId;
+//	}
+//	public void setEmployeeId(long employeeId) {
+//		this.employeeId = employeeId;
+//	}
 	public String getEmployeeName() {
 		return employeeName;
 	}
